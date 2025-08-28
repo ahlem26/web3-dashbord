@@ -20,18 +20,7 @@ function Navbar() {
         <li><Link href="/about">About</Link></li>
         <li><Link href="/contact">Contact</Link></li>
         <li><DarkModeToggle /></li>
-        <li>
-          <SignedOut>
-            <SignInButton>
-              <button className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500">
-                Login
-              </button>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
-        </li>
+
       </ul>
     </nav>
   );
@@ -39,15 +28,17 @@ function Navbar() {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <ClerkProvider publishableKey={process.env.CLERK_PUBLISHABLE_KEY}>
       <html lang="en" suppressHydrationWarning>
         <body>
+              <ClerkProvider publishableKey={process.env.CLERK_PUBLISHABLE_KEY}>
+
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
             <Navbar />
             <main>{children}</main>
           </ThemeProvider>
+              </ClerkProvider>
+
         </body>
       </html>
-    </ClerkProvider>
   );
 }

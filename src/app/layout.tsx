@@ -20,7 +20,18 @@ function Navbar() {
         <li><Link href="/about">About</Link></li>
         <li><Link href="/contact">Contact</Link></li>
         <li><DarkModeToggle /></li>
-
+        <li>
+          <SignedOut>
+            <SignInButton>
+              <button className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-500">
+                Login
+              </button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </li>
       </ul>
     </nav>
   );
